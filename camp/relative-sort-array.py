@@ -1,14 +1,19 @@
 class Solution:
     def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
-        arr3 = []
+        #Count Sort qrr 1 according to arr2 as a key
+        max_ = max(arr1)
+        min_ = min(arr1)
+        lst = []
         res = []
-        arr1.sort()
-        for i in arr2:
-            for _ in range(arr1.count(i)):
-                res.append(i)
-        for j in arr1:
-            if j not in arr2:
-                res.append(j)
-        return res
-
         
+        lst = [0]*(max_+ 1)
+        for value in arr1:
+            lst[value] +=1
+        for value in arr2:
+            res.extend([value]*lst[value]) 
+            lst[value] = 0
+        print(lst)
+        for p in range(len(lst)):
+            if lst[p] != 0:
+                res.extend([p]*lst[p])
+        return res
