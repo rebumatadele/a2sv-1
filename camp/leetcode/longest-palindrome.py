@@ -7,14 +7,11 @@ class Solution:
         for i in s:
             dic[i] += 1
 
-        for key, val in dic.items():
+        for key, val in dic.items():       
+            flag += val % 2
             if val % 2 == 1:
-                flag += 1
-
-            if flag > 1 and val % 2 == 1:
-                count += val - 1
-                continue
-
+                val -= 1
             count += val
-
+        if flag:
+            count += 1
         return count
