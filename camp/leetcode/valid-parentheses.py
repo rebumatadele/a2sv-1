@@ -1,30 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
+        close = {")":"(", "}": "{", "]":"["}
         for i in s:
-            if i == ")" or i =="}" or i == "]":
-                if len(stack) <= 0:
+            if i in close:
+                if stack and stack[-1] == close[i]:
+                    stack.pop()
+                else:
                     return False
-                val = stack[-1]
-                #return False if i does not close val
-                if val == "(":
-                    if i ==")" :
-                        stack.pop()
-                    else:
-                        return False 
-                elif val == "{":
-                    if i =="}" :
-                        stack.pop()
-                    else:
-                        return False 
-                elif val == "[":
-                    if i =="]" :
-                        stack.pop()
-                    else:
-                        return False 
-                continue
-            
-            stack.append(i)
-        if len(stack) > 0:
-                return False
-        return True
+            else:
+                stack.append(i)
+        return True if not stack else False
+           
