@@ -8,7 +8,6 @@ class Solution:
                 right = mid
             else:
                 left = mid
-        print(letters[left])
         if left + 1 < len(letters):
             return letters[left+1]
         return letters[0]
