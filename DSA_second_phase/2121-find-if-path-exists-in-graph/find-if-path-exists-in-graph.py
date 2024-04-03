@@ -8,17 +8,20 @@ class Solution:
                 graph[v].append(u) 
             return graph
         
-        def dfs(vertex, visited):
-            if vertex == destination:
-                return True
-            visited.add(vertex)
-            for neighbour in graph[vertex]:
-                if neighbour not in visited:
-                    node = dfs(neighbour, visited)
-                    if node:
-                        return True
+        def dfs(visited, stack):
 
+            while stack:
+                current = stack.pop()
+                if current == destination:
+                    return True
+
+                for neighbour in graph[current]:
+                    if neighbour not in visited:
+                        stack.append(neighbour)
+                        visited.add(neighbour)
+
+            return False
         visited = set()
+        stack = [source]
         graph = build(edges)
-        print(graph)
-        return dfs(source, visited)
+        return dfs(visited, stack)
