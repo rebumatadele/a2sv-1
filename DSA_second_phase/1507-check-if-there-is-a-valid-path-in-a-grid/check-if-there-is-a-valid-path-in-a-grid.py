@@ -19,7 +19,6 @@ class Solution:
                         return True
             return False
 
-        #set up the direction and the visited
         dxn = [[(0,1), (0,-1)], 
                 [(1,0), (-1,0)], 
                 [(0,-1), (1,0)], 
