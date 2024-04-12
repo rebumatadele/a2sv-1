@@ -66,6 +66,5 @@ for _ in range(t):
                     
         parent = current         
         loc += 1
-print(count)
     
     
