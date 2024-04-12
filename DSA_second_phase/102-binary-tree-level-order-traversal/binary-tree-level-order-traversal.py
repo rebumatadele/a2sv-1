@@ -12,14 +12,13 @@ class Solution:
         res = []
         while que:
             l = len(que)
-            temp = []
+            res.append([current.val for current in que])
+
             for _ in range(l):
                 current = que.popleft()
-                temp.append(current.val)
                 if current.left:
                     que.append(current.left)
                 if current.right:
                     que.append(current.right)
-            res.append(temp)    
-        print(res)
+                    
         return res        
