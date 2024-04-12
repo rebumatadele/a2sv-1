@@ -7,14 +7,14 @@
 class Solution:
     def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
         #We're working with a tree
-        stack = [root]
+        que = deque([root])
         value = root.val
-        while stack:
-            current = stack.pop()
+        while que:
+            current = que.popleft()
             if current.val != value:
                 return False
             if current.left:
-                stack.append(current.left)
+                que.append(current.left)
             if current.right:
-                stack.append(current.right)
+                que.append(current.right)
         return True
