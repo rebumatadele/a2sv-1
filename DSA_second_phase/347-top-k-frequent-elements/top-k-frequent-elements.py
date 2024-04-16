@@ -3,7 +3,7 @@ class Solution:
         dic = defaultdict(int)
         for i in nums:
             dic[i] += 1
-            
+
         my_nums = []
         for key, val in dic.items():
             my_nums.append((val, key))
@@ -17,4 +17,4 @@ class Solution:
         for i in heap:
             ans.append(i[1])
 
-        return sorted(ans)
+        return ans
