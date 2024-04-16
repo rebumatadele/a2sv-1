@@ -3,6 +3,18 @@ class Solution:
         dic = defaultdict(int)
         for i in nums:
             dic[i] += 1
-        nums = list(set(nums))
-        nums.sort(key = lambda x: dic[x], reverse = True)
-        return nums[:k]
+            
+        my_nums = []
+        for key, val in dic.items():
+            my_nums.append((val, key))
+
+        heap = []
+        for i in my_nums:
+            heappush(heap, i)
+            if len(heap) > k:
+                heappop(heap)
+        ans = []
+        for i in heap:
+            ans.append(i[1])
+
+        return sorted(ans)
