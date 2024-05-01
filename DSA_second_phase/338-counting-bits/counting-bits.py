@@ -2,24 +2,14 @@ class Solution:
     def countBits(self, n: int) -> List[int]:
         ans = [0 for _ in range(n+1)]
         for i in range(n+1):
-            cnt = 0
-            origional = i
-            while i >= 1:
-                if i & 1 == 1:
-                    cnt += 1
-                i >>= 1
-            ans[origional] = cnt
+            count = 0
+            j = i
+            while j > 0:
+                count += j & 1
+                j >>= 1
+            ans[i] = count
         return ans
-        # print(ans)
 
-        # for i in range(n+1):
-
-        #     if i % 2 == 1:
-        #         ans[i] = ans[i -1] + 1
-        #     else:
-        #         ans[i] = ans[i // 2 ]
-        #         # print("dfg")
-        # return ans
 
 
                 
