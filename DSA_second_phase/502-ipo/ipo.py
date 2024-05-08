@@ -15,6 +15,9 @@ class Solution:
                 current = -heappop(available)
                 ans += current
                 w += current
+                k -= 1
+            else:
+                break
 
-            k -= 1
+            
         return ans
