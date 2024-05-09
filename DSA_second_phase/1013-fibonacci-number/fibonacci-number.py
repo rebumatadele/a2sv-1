@@ -1,6 +1,6 @@
 class Solution:
     def __init__(self):
-        self.memo = defaultdict()
+        self.memo = defaultdict(int)
     def fib(self, n: int) -> int:
         if n == 0 or n == 1:
             return n
