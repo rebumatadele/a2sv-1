@@ -1,11 +1,11 @@
 class Solution:
-    def __init__(self):
-        self.memo = defaultdict(int)
     def fib(self, n: int) -> int:
+        que = deque([0, 1])
+        ans = 1
         if n == 0 or n == 1:
             return n
-        elif n not in self.memo:
-            self.memo[n] = self.fib(n - 1) + self.fib(n - 2)
-        return self.memo[n]
-
-        
+        for i in range(2, n+1):
+            ans = sum(que)
+            que.append(ans)
+            que.popleft()
+        return ans
