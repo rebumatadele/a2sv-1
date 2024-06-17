@@ -1,7 +1,6 @@
 class Solution:
     def canCross(self, stones: list[int]) -> bool:
         s = set(stones)
-
         @cache
         def jump(i, k):
             if i == stones[-1]:
@@ -11,5 +10,4 @@ class Solution:
                     return True
             return False
 
-        
         return jump(stones[0], 0)
