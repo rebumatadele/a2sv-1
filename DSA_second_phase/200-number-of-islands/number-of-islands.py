@@ -7,28 +7,18 @@ class Solution:
         islands = 0
         visited = set()
         rows, cols = len(grid), len(grid[0])
-
         def inbound(r, c):
             return (0<= r < rows) and (0 <= c < cols)
-        def bfs(r, c):
-            que = deque()
+        def dfs(r, c):
             visited.add((r, c))
-            que.append((r,c))
-
-            while que:
-                row, col = que.popleft()
-                directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
-                for dr, dc in directions:
-                    r, c = row + dr, col + dc
-                    if inbound(r, c) and grid[r][c] == "1" and (r, c) not in visited:
-                        que.append((r, c))
-                        visited.add((r, c))
-
-
-
+            directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+            for dr, dc in directions:
+                nr, nc = r + dr, c + dc
+                if inbound(nr, nc) and grid[nr][nc] == "1" and (nr, nc) not in visited:
+                    dfs(nr, nc)
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1" and (r, c) not in visited:
                     islands += 1
-                    bfs(r, c)
+                    dfs(r, c)
         return islands
